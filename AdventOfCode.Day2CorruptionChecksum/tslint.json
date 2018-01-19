@@ -1,0 +1,29 @@
+{
+    "extends": [
+        "tslint:latest",
+        "tslint-microsoft-contrib",
+        "tslint-sonarts"
+    ],
+    "rules": {
+        "typedef": [
+            true,
+            "call-signature",
+            "arrow-call-signature",
+            "parameter",
+            "arrow-parameter",
+            "property-declaration",
+            "member-variable-declaration",
+            "object-destructuring",
+            "array-destructuring"
+        ],
+        "no-console": false,
+        "variable-name": [
+            true,
+            "ban-keywords",
+            "check-format",
+            "allow-leading-underscore"
+        ],
+        "no-relative-imports": false,
+        "no-parameter-properties": false
+    }
+}
