@@ -54,8 +54,7 @@ export function minMaxLineSum(numbers: Iterable<number>): number {
 /**
  * Yields every distinct pair of items in an array.
  */
-export function* iteratePairs<TItem>(items: TItem[]):
-    IterableIterator<[TItem, TItem]> {
+export function* iteratePairs<TItem>(items: TItem[]): Iterable<[TItem, TItem]> {
     if (items.length < 2) {
         return;
     }

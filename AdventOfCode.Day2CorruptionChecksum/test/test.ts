@@ -7,7 +7,7 @@ import {expect} from 'chai';
 /* tslint:enable:no-implicit-dependencies */
 import * as _lib from '../lib';
 
-/* tslint:disable:no-unused-expression*/
+/* tslint:disable:no-unused-expression */
 describe('lib.lineToNumbers()', () => {
     it('empty or whitespace string returns empty array', () => {
         expect([..._lib.lineToNumbers('')]).empty;
