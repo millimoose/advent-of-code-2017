@@ -10,19 +10,19 @@
  * @return A sequence of numbers parsed from the string.
  */
 export function* lineToNumbers(line: string): Iterable<number> {
-    const trimmed = line.trim();
+    const trimmed = line.trim()
     if (trimmed === '') {
-        return;
+        return
     }
-    const parts: Iterable<string> = trimmed.split(/\s+/);
+    const parts: Iterable<string> = trimmed.split(/\s+/)
     for (const part of parts) {
-        yield Number(part);
+        yield Number(part)
     }
 }
 
 function isIterable<T>(obj: object): obj is Iterable<T> {
-    return obj != null
-        && typeof (obj[Symbol.iterator]) === 'function';
+    return (obj != null
+        && typeof (obj[Symbol.iterator]) === 'function')
 }
 
 /**
@@ -30,24 +30,24 @@ function isIterable<T>(obj: object): obj is Iterable<T> {
  * Returns 0 for an empty sequence;
  */
 export function minMaxLineSum(numbers: Iterable<number>): number {
-    let min: number | null = null;
-    let max: number | null = null;
+    let min: number | null = null
+    let max: number | null = null
 
     for (const num of numbers) {
         if (min == null) {
-            min = num;
+            min = num
         }
         if (max == null) {
-            max = num;
+            max = num
         }
-        min = Math.min(min, num);
-        max = Math.max(max, num);
+        min = Math.min(min, num)
+        max = Math.max(max, num)
     }
 
     if (min == null || max == null) {
-        return 0;
+        return 0
     } else {
-        return max - min;
+        return max - min
     }
 }
 
@@ -56,11 +56,11 @@ export function minMaxLineSum(numbers: Iterable<number>): number {
  */
 export function* iteratePairs<TItem>(items: TItem[]): Iterable<[TItem, TItem]> {
     if (items.length < 2) {
-        return;
+        return
     }
     for (let i = 0; i < items.length - 1; i += 1) {
         for (let j = i + 1; j < items.length; j += 1) {
-            yield [items[i], items[j]];
+            yield [items[i], items[j]]
         }
     }
 }
@@ -72,15 +72,15 @@ export function evenDivLineSum(numbers: Iterable<number>): number {
     for (let [min, max] of iteratePairs([...numbers])) {
         // swap min and max if they're in the wrong order
         if (min > max) {
-            [min, max] = [max, min];
+            [min, max] = [max, min]
         }
         // is max evenly divisible by min?
         if (max % min === 0) {
-            return max / min;
+            return max / min
         }
     }
 
-    return 0;
+    return 0
 }
 
 /**
@@ -94,7 +94,7 @@ export function evenDivLineSum(numbers: Iterable<number>): number {
  * summer.sum;
  */
 export class CheckSummer {
-    private _sum: number = 0;
+    private _sum: number = 0
 
     constructor(
         private readonly _lineSumFunc: (numbers: Iterable<number>) => number
@@ -102,7 +102,7 @@ export class CheckSummer {
     /**
      * Returns the computed checksum.
      */
-    get sum(): number { return this._sum; }
+    get sum(): number { return this._sum }
 
     /**
      * Includes the given line in the checksum.
@@ -110,16 +110,16 @@ export class CheckSummer {
      * @returns This object.
      */
     public addLine(line: string | Iterable<number>): this {
-        let numbers: Iterable<number>;
+        let numbers: Iterable<number>
         if (typeof (line) === 'string') {
-            numbers = lineToNumbers(line);
+            numbers = lineToNumbers(line)
         } else if (isIterable<number>(line)) {
-            numbers = line;
+            numbers = line
         }
 
-        const lineSum = this._lineSumFunc(numbers);
-        this._sum += lineSum;
+        const lineSum = this._lineSumFunc(numbers)
+        this._sum += lineSum
 
-        return this;
+        return this
     }
 }

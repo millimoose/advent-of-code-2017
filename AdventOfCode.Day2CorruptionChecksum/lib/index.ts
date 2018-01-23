@@ -2,4 +2,4 @@
  * Flattens the `lib` module.
  */
 
-export * from './lib';
+export * from './lib'

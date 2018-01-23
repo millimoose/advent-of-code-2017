@@ -24,6 +24,8 @@
             "allow-leading-underscore"
         ],
         "no-relative-imports": false,
-        "no-parameter-properties": false
+        "no-parameter-properties": false,
+        "semicolon": [true, "never"],
+        "no-unnecessary-semicolons":  true
     }
 }
